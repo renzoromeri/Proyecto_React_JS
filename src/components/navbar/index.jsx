@@ -4,7 +4,8 @@ import Card from "react-bootstrap/Card";
 import CartWidget from '../cartwidget';
 
 
-const NavbarComponent = () => {
+const NavbarComponent = ({text}) => {
+  var aux = text
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -19,7 +20,7 @@ const NavbarComponent = () => {
           <Nav.Link href="#pricing">Promociones</Nav.Link>
         </Nav>
         <Nav.Item className="mr-auto">
-        <CartWidget></CartWidget>
+        <CartWidget text={aux}/>
         </Nav.Item>
         <NavDropdown title="Carrito" id="nav-dropdown">
             <Card style={{ width: "18rem" }}>
@@ -28,6 +29,7 @@ const NavbarComponent = () => {
                 <Card.Title>Productos Seleccionados</Card.Title>
                 <Card.Text>
                   Estos productos has elegidos para comprar.
+                  <CartWidget text={aux}/>
                 </Card.Text>
                 <Button variant="primary">Ver</Button>
               </Card.Body>

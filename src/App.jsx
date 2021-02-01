@@ -4,9 +4,10 @@ import NavbarComponent from './components/navbar';
 import ItemListContainer from './containers/ItemListContainer';
 
 const App = () => {
+  var producto = 21
   return (
     <>    
-    <NavbarComponent />
+    <NavbarComponent text={producto}/>
 
     <ItemListContainer text={'Bienvenidos a La Botellita!!!'}/>
 
@@ -17,7 +18,6 @@ const App = () => {
 }
 
 export default App;
-
 
 
 

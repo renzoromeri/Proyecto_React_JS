@@ -1,13 +1,18 @@
-import carrito from './carrito.png';
-import './cartwidget.css';
+import carrito from "./carrito.png";
+import "./cartwidget.css";
 
-const CartWidget = () => {
-    
-    
-    return (
+const CartWidget = ({text}) => {
+
+  return (
     <>
-    <img src={carrito} className="carrito" alt="carrito" />
-
+      <section className="cartwidget">
+        <div>
+        <img src={carrito} className="carrito" alt="carrito" />
+        </div>
+        <div>
+        <p>{text}</p>      
+        </div>
+      </section>
     </>
   );
 };

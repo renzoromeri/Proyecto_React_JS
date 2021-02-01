@@ -19,9 +19,9 @@ const NavbarComponent = ({text}) => {
           <Nav.Link href="#pricing">Accesorios</Nav.Link>
           <Nav.Link href="#pricing">Promociones</Nav.Link>
         </Nav>
-        <Nav.Item className="mr-auto">
+        {/* <Nav.Item className="mr-auto">
         <CartWidget text={aux}/>
-        </Nav.Item>
+        </Nav.Item> */}
         <NavDropdown title="Carrito" id="nav-dropdown">
             <Card style={{ width: "18rem" }}>
               {/* <Card.Img variant="top" src="holder.js/100px180" /> */}

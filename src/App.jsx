@@ -1,13 +1,16 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavbarComponent from './components/navbar';
+import ItemListContainer from './containers/ItemListContainer';
 
 const App = () => {
   return (
     <>    
     <NavbarComponent />
 
-    <button className="btn btn-primary btn-success">Exito!</button>
+    <ItemListContainer text={'Bienvenidos a La Botellita!!!'}/>
+
+    {/* <button className="btn btn-primary btn-success">Exito!</button> */}
 
     </>
   );

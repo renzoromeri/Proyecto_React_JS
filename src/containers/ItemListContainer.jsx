@@ -1,27 +1,10 @@
 import * as React from "react";
 import { useState } from "react";
-import { ItemCount } from "../components/itemCount";
 import ItemList from "../components/ItemList";
 import productList from "../mocks/productsList";
+// import ItemDetailContainer from "./ItemDetailContainer";
 
 const ItemListContainer = ({ text }) => {
-  // contador - desafio clase 5
-  const [contador, setContador] = useState(1);
-
-  const onAdd = () => {
-    // if (contador < stock) {
-    //   setContador(contador + 1);
-    // }else{
-    //     console.log("Perdon, no queda mas stock!!");
-    // }
-    setContador(contador + 1);
-  };
-
-  const onRest = () => {
-    if (contador > 1) {
-      setContador(contador - 1);
-    }
-  };
 
   // desafio clase 6
 
@@ -51,18 +34,11 @@ const ItemListContainer = ({ text }) => {
       
       <div>
         <ItemList products={products}/>
+        {/* <ItemDetailContainer id={2}/> */}
       </div>
       
       <br />
 
-      <div>
-        <ItemCount
-          stock={12}
-          contador={contador}
-          onAdd={onAdd}
-          onRest={onRest}
-        ></ItemCount>
-      </div>
     </>
   );
 };

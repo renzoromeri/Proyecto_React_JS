@@ -1,14 +1,15 @@
 import "./style.css";
 
 const ItemDetail = ({ product }) => {
-  
 
   return (
     <>
       <div className="card">
-        <h2>{product.name}</h2>
+        <h4>Descripción:</h4>
         <br/>
-        <h3>$ {product.price}</h3>
+        <h4>{product.desc}</h4>
+        <br/>
+        <h5>Aqui va la imagen del producto!</h5>
       </div>
     </>
   );

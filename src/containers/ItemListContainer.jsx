@@ -2,7 +2,6 @@ import * as React from "react";
 import { useState } from "react";
 import ItemList from "../components/ItemList";
 import productList from "../mocks/productsList";
-// import ItemDetailContainer from "./ItemDetailContainer";
 
 const ItemListContainer = ({ text }) => {
 
@@ -34,7 +33,6 @@ const ItemListContainer = ({ text }) => {
       
       <div>
         <ItemList products={products}/>
-        {/* <ItemDetailContainer id={2}/> */}
       </div>
       
       <br />

@@ -1,28 +1,47 @@
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import NavbarComponent from './components/navbar';
-import ItemListContainer from './containers/ItemListContainer';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import NavbarComponent from "./components/navbar";
+import ItemListContainer from "./containers/ItemListContainer";
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+// import ItemDetailContainer from "./containers/ItemDetailContainer";
 
 const App = () => {
-  var producto = 21
+  
+  var producto = 21;
+  // var id = 2;
+  // var nombre = "Vino";
+
   return (
-    <>    
-    <NavbarComponent text={producto}/>
+    <BrowserRouter>
 
-    <ItemListContainer text={'Bienvenidos a La Botellita!!!'}/>
+      <NavbarComponent text={producto} />
 
-    {/* <button className="btn btn-primary btn-success">Exito!</button> */}
+      <Switch>
 
-    </>
+        <Route extact path="/">
+
+          <ItemListContainer text={"Bienvenidos a La Botellita!!!"} />
+          
+          {/* <ItemDetailContainer filtro={"Vino"}/> */}
+
+        </Route>
+
+        {/* <Route extact path="/contacto">
+
+          <SegundoContainer text={"Bienvenidos a La Botellita!!!"} />
+
+        </Route> */}
+
+        <Route path="*" children={<div>Not found</div>} />
+
+      </Switch>
+      {/* <footer></footer> */}
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
-
-
-
-
-
 
 
 

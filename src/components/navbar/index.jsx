@@ -9,15 +9,16 @@ const NavbarComponent = ({text}) => {
   return (
     <>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">La Botellita</Navbar.Brand>
+        <Navbar.Brand href="/">La Botellita</Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link href="#home">Vinos</Nav.Link>
-          <Nav.Link href="#features">Cervezas</Nav.Link>
-          <Nav.Link href="#pricing">Gaseosas</Nav.Link>
-          <Nav.Link href="#pricing">Whiskys</Nav.Link>
-          <Nav.Link href="#pricing">Espirituosos</Nav.Link>
-          <Nav.Link href="#pricing">Accesorios</Nav.Link>
-          <Nav.Link href="#pricing">Promociones</Nav.Link>
+          <Nav.Link href="/categorias">Categorias:</Nav.Link>
+          <Nav.Link href="/categorias/vinos">Vinos</Nav.Link>
+          <Nav.Link href="/categorias/cervezas">Cervezas</Nav.Link>
+          <Nav.Link href="/categorias/gaseosas">Gaseosas</Nav.Link>
+          <Nav.Link href="/categorias/whiskys">Whiskys</Nav.Link>
+          <Nav.Link href="/categorias/espirituosos">Espirituosos</Nav.Link>
+          <Nav.Link href="/categorias/accesorios">Accesorios</Nav.Link>
+          <Nav.Link href="/categorias/promociones">Promociones</Nav.Link>
         </Nav>
         {/* <Nav.Item className="mr-auto">
         <CartWidget text={aux}/>

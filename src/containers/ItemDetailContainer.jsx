@@ -1,9 +1,12 @@
 import * as React from "react";
 import { useState } from "react";
-import ItemDetail from "../components/ItemDetail";
+import { useParams } from "react-router-dom";
+import Item from "../components/Item";
 import productList from "../mocks/productsList";
 
-const ItemDetailContainer = (filtro) => {
+// en el prop pasaba "filtro" para que funcione como antes 
+const ItemDetailContainer = () => {
+  
   const [producto1, setProducto1] = useState([]);
 
   React.useEffect(() => {
@@ -21,13 +24,26 @@ const ItemDetailContainer = (filtro) => {
 
   console.log(producto1);
 
-  const found = productList.find((element) => element.name = filtro);
+
+  const {id} = useParams();
+  
+  console.log("dato: " + id);
+
+  const found = productList.filter((element) => element.idCat === id);
   
   console.log(found);
 
+
+
+
   return (
+    // <div>
+    //   <Item product={found} />;
+    // </div>
     <div>
-      <ItemDetail product={found} />;
+      {found.map((product) => {
+        return <Item key={product.id} product={product} />
+      })}
     </div>
   );
 };

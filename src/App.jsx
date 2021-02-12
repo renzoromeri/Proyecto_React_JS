@@ -4,37 +4,34 @@ import NavbarComponent from "./components/navbar";
 import ItemListContainer from "./containers/ItemListContainer";
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Categorias from "./components/Categorias";
+import ItemDetailContainer from "./containers/ItemDetailContainer";
 // import ItemDetailContainer from "./containers/ItemDetailContainer";
 
 const App = () => {
-  
   var producto = 21;
   // var id = 2;
   // var nombre = "Vino";
 
   return (
     <BrowserRouter>
-
       <NavbarComponent text={producto} />
 
       <Switch>
-
-        <Route extact path="/">
-
+        <Route exact path="/">
           <ItemListContainer text={"Bienvenidos a La Botellita!!!"} />
-          
-          {/* <ItemDetailContainer filtro={nombre}/> */}
 
+          {/* <ItemDetailContainer filtro={nombre}/> */}
         </Route>
 
-        {/* <Route extact path="/contacto">
-
-          <SegundoContainer text={"Bienvenidos a La Botellita!!!"} />
-
-        </Route> */}
+        <Route exact path="/categorias">
+          <Categorias/>
+        </Route>
+        <Route exact path="/categorias/:id">
+          <ItemDetailContainer/>
+        </Route>
 
         <Route path="*" children={<div>Not found</div>} />
-
       </Switch>
       {/* <footer></footer> */}
     </BrowserRouter>
@@ -42,8 +39,6 @@ const App = () => {
 };
 
 export default App;
-
-
 
 // import logo from './logo.svg';
 // import './App.css';

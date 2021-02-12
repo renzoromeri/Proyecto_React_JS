@@ -2,16 +2,13 @@
 import { ItemCount } from "../ItemCount";
 import ItemDetail from "../ItemDetail";
 import "./style.css";
+import { useState } from "react";
 
 const Item = ({ product }) => {
-  const detalle = () => {
-    var element = document.getElementById("item");
-    element.style.display = "flex";
-  };
+  const [mostrar, setMostrar] = useState(false);
 
-  const cerrar = () => {
-    var element = document.getElementById("item");
-    element.style.display = "none";
+  const changeView = () => {
+    setMostrar(!mostrar);
   };
 
   return (
@@ -23,12 +20,14 @@ const Item = ({ product }) => {
           <p>Precio: ${product.price}</p>
         </div>
         <br />
-        <h4 onClick={detalle}>Detalle</h4>
-        <div id="item" className="itemdetail" style={{ display: "none" }}>
-          <ItemDetail product={product} />
-          <br />
-          <h4 onClick={cerrar}>x</h4>
-        </div>
+        <h4 onClick={changeView}>Detalle</h4>
+        {mostrar ? (
+          <div id="item" className="itemdetail">
+            <ItemDetail product={product} />
+            <br />
+            <h4 onClick={changeView}>x</h4>
+          </div>
+        ) : null}
         <br />
         <ItemCount stock={product.stock} />
       </div>
@@ -38,3 +37,35 @@ const Item = ({ product }) => {
 };
 
 export default Item;
+
+// const detalle = (product) => {
+//   var element = document.getElementById(product.id);
+//   element.style.display = "flex";
+// };
+
+// const cerrar = () => {
+//   var element = document.getElementById(product.id);
+//   element.style.display = "none";
+// };
+
+// return (
+//   <>
+//     <div className="card">
+//       <h3>{product.name}</h3>
+//       <br />
+//       <div>
+//         <p>Precio: ${product.price}</p>
+//       </div>
+//       <br />
+//       <h4 onClick={() => detalle(product)}>Detalle</h4>
+//       <div id={product.id} className="itemdetail" style={{ display: "none" }}>
+//         <ItemDetail product={product} />
+//         <br />
+//         <h4 onClick={cerrar}>x</h4>
+//       </div>
+//       <br />
+//       <ItemCount stock={product.stock} />
+//     </div>
+//     <br />
+//   </>
+// );

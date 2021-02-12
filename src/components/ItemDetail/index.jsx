@@ -1,4 +1,5 @@
 import "./style.css";
+import vino from "./vino.png";
 
 const ItemDetail = ({ product }) => {
 
@@ -9,7 +10,7 @@ const ItemDetail = ({ product }) => {
         <br/>
         <h4>{product.desc}</h4>
         <br/>
-        <h5>Aqui va la imagen del producto!</h5>
+        <img src={vino} className="carrito" alt="carrito" />
       </div>
     </>
   );

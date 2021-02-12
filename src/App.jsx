@@ -23,7 +23,7 @@ const App = () => {
 
           <ItemListContainer text={"Bienvenidos a La Botellita!!!"} />
           
-          {/* <ItemDetailContainer filtro={"Vino"}/> */}
+          {/* <ItemDetailContainer filtro={nombre}/> */}
 
         </Route>
 

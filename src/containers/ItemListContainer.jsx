@@ -5,8 +5,6 @@ import productList from "../mocks/productsList";
 
 const ItemListContainer = ({ text }) => {
 
-  // desafio clase 6
-
   const [products, setProducts] = useState([]);
 
   React.useEffect(() => {

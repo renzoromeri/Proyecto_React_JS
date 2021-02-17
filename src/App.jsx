@@ -6,12 +6,10 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Categorias from "./components/Categorias";
 import ItemDetailContainer from "./containers/ItemDetailContainer";
-// import ItemDetailContainer from "./containers/ItemDetailContainer";
+import ItemDetailContainerB from "./containers/ItemDetailContainerB";
 
 const App = () => {
   var producto = 21;
-  // var id = 2;
-  // var nombre = "Vino";
 
   return (
     <BrowserRouter>
@@ -29,6 +27,10 @@ const App = () => {
         </Route>
         <Route exact path="/categorias/:id">
           <ItemDetailContainer/>
+        </Route>
+
+        <Route exact path="/producto/:id">
+        <ItemDetailContainerB />
         </Route>
 
         <Route path="*" children={<div>Not found</div>} />

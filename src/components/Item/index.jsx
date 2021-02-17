@@ -1,8 +1,7 @@
-// import ItemDetailContainer from "../../containers/ItemDetailContainer";
-import { ItemCount } from "../ItemCount";
 import ItemDetail from "../ItemDetail";
 import "./style.css";
 import { useState } from "react";
+import {Link} from 'react-router-dom';
 
 const Item = ({ product }) => {
   const [mostrar, setMostrar] = useState(false);
@@ -14,13 +13,13 @@ const Item = ({ product }) => {
   return (
     <>
       <div className="card">
-        <h3>{product.name}</h3>
+        <Link to={`/producto/${product.id}`}>{product.name}</Link>
         <br />
         <div>
           <p>Precio: ${product.price}</p>
         </div>
         <br />
-        <h4 onClick={changeView}>Detalle</h4>
+        <h4 onClick={changeView}>Agregar al carrito</h4>
         {mostrar ? (
           <div id="item" className="itemdetail">
             <ItemDetail product={product} />
@@ -29,7 +28,6 @@ const Item = ({ product }) => {
           </div>
         ) : null}
         <br />
-        <ItemCount stock={product.stock} />
       </div>
       <br />
     </>
@@ -37,35 +35,3 @@ const Item = ({ product }) => {
 };
 
 export default Item;
-
-// const detalle = (product) => {
-//   var element = document.getElementById(product.id);
-//   element.style.display = "flex";
-// };
-
-// const cerrar = () => {
-//   var element = document.getElementById(product.id);
-//   element.style.display = "none";
-// };
-
-// return (
-//   <>
-//     <div className="card">
-//       <h3>{product.name}</h3>
-//       <br />
-//       <div>
-//         <p>Precio: ${product.price}</p>
-//       </div>
-//       <br />
-//       <h4 onClick={() => detalle(product)}>Detalle</h4>
-//       <div id={product.id} className="itemdetail" style={{ display: "none" }}>
-//         <ItemDetail product={product} />
-//         <br />
-//         <h4 onClick={cerrar}>x</h4>
-//       </div>
-//       <br />
-//       <ItemCount stock={product.stock} />
-//     </div>
-//     <br />
-//   </>
-// );

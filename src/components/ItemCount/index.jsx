@@ -1,42 +1,24 @@
 import "./style.css";
-import { useState } from "react";
+import {Link} from 'react-router-dom';
 
-export const ItemCount = ({stock}) => {
-
-    var stock2 = stock
-
-    // contador - desafio clase 5
-  const [contador, setContador] = useState(1);
-
-  const onAdd = () => {
-    // if (contador < stock) {
-    //   setContador(contador + 1);
-    // }else{
-    //     console.log("Perdon, no queda mas stock!!");
-    // }
-    setContador(contador + 1);
-  };
-
-  const onRest = () => {
-    if (contador > 1) {
-      setContador(contador - 1);
-    }
-  };
-
+export const ItemCount = ({stock, cont, onAdd, onRest, boton, onBoton}) => {
 
     return (
-        <>
-        <div>
-        <button onClick={onRest} >-</button>
-        <b>{contador}</b>
-        {(contador < stock2) ?
-        <button onClick={ () => { onAdd(stock2) } }>+</button>
-        : <p>No queda mas stock, lo lamento!!!</p>
-        }
-        </div>
-        <div>
-        <button>Comprar</button>
-        </div>
-        </>
+      <>
+      <div>
+      <button onClick={onRest} >-</button>
+      <b>{cont}</b>
+      {(cont < stock) ?
+      <button onClick={ () => { onAdd(stock) } }>+</button>
+      : <p>No queda mas stock, lo lamento!!!</p>
+      }
+      </div>
+      <div>
+      {(boton === 1) ?
+      <button onClick={onBoton}>Agregar al Carrito</button>
+      : <Link to={`/cart/`}>Terminar mi compra</Link>
+      }
+      </div>
+      </>
     )
 }

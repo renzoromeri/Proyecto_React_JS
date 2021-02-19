@@ -1,9 +1,8 @@
 import vino from "../ItemDetail/vino.png";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Categorias = () => {
-  
-    const listaCategorias = [
+  const listaCategorias = [
     {
       name: "vinos",
       rout: vino,
@@ -31,15 +30,18 @@ const Categorias = () => {
     {
       name: "promociones",
       rout: vino,
-    },];
+    },
+  ];
 
   return (
     <div>
-      {listaCategorias.map(element => {
-        return <>
-            <img src={element.rout} width='80' alt="" />
+      {listaCategorias.map((element) => {
+        return (
+          <>
+            <img src={element.rout} width="80" alt="" />
             <Link to={`/categorias/${element.name}`}>{element.name}</Link>
           </>
+        );
       })}
     </div>
   );

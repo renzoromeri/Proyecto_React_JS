@@ -21,10 +21,10 @@ const ItemDetailContainerB = () => {
 
   const { id } = useParams();
 
-
   // aca no funciona si llamo a "productB"
   const found = productList.find((element) => element.id == id);
 
+  // borrar esto despues que funcione!!
   console.log(productList);
   console.log(productB);
   console.log("dato: " + id);

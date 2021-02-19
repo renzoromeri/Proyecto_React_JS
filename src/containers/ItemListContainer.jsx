@@ -4,7 +4,6 @@ import ItemList from "../components/ItemList";
 import productList from "../mocks/productsList";
 
 const ItemListContainer = ({ text }) => {
-
   const [products, setProducts] = useState([]);
 
   React.useEffect(() => {
@@ -28,13 +27,12 @@ const ItemListContainer = ({ text }) => {
       </div>
 
       <br />
-      
-      <div>
-        <ItemList products={products}/>
-      </div>
-      
-      <br />
 
+      <div>
+        <ItemList products={products} />
+      </div>
+
+      <br />
     </>
   );
 };

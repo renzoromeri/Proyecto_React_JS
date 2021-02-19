@@ -1,11 +1,17 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Navbar,Nav,Form,FormControl,Button,NavDropdown} from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  Button,
+  NavDropdown,
+} from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import CartWidget from '../cartwidget';
+import CartWidget from "../cartwidget";
 
-
-const NavbarComponent = ({text}) => {
-  var aux = text
+const NavbarComponent = ({ text }) => {
+  var aux = text;
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -20,21 +26,18 @@ const NavbarComponent = ({text}) => {
           <Nav.Link href="/categorias/accesorios">Accesorios</Nav.Link>
           <Nav.Link href="/categorias/promociones">Promociones</Nav.Link>
         </Nav>
-        {/* <Nav.Item className="mr-auto">
-        <CartWidget text={aux}/>
-        </Nav.Item> */}
         <NavDropdown title="Carrito" id="nav-dropdown">
-            <Card style={{ width: "18rem" }}>
-              {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-              <Card.Body>
-                <Card.Title>Productos Seleccionados</Card.Title>
-                <Card.Text>
-                  Estos productos has elegidos para comprar.
-                  <CartWidget text={aux}/>
-                </Card.Text>
-                <Button variant="primary">Ver</Button>
-              </Card.Body>
-            </Card>
+          <Card style={{ width: "18rem" }}>
+            {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+            <Card.Body>
+              <Card.Title>Productos Seleccionados</Card.Title>
+              <Card.Text>
+                Estos productos has elegidos para comprar.
+                <CartWidget text={aux} />
+              </Card.Text>
+              <Button variant="primary">Ver</Button>
+            </Card.Body>
+          </Card>
         </NavDropdown>
 
         <Form inline>

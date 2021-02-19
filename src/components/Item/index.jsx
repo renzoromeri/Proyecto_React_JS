@@ -1,7 +1,7 @@
 import ItemDetail from "../ItemDetail";
 import "./style.css";
 import { useState } from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Item = ({ product }) => {
   const [mostrar, setMostrar] = useState(false);
@@ -19,7 +19,7 @@ const Item = ({ product }) => {
           <p>Precio: ${product.price}</p>
         </div>
         <br />
-        <h4 onClick={changeView}>Agregar al carrito</h4>
+        <h4 onClick={changeView}>Detalle del producto</h4>
         {mostrar ? (
           <div id="item" className="itemdetail">
             <ItemDetail product={product} />

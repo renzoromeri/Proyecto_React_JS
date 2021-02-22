@@ -7,32 +7,23 @@ import productList from "../mocks/productsList";
 const ItemDetailContainerB = () => {
   const [productB, setProductB] = useState([]);
 
+  const { id } = useParams();
+
   React.useEffect(() => {
     const myPromiseB = new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(productList);
       }, 2000);
     });
-    myPromiseB.then(
-      (result) => setProductB(result)
-      // ()=>{}
-    );
+    myPromiseB.then((result) => {
+      const found = result.find((element) => element.id == id);
+      setProductB(found);
+    });
   }, []);
-
-  const { id } = useParams();
-
-  // aca no funciona si llamo a "productB"
-  const found = productList.find((element) => element.id == id);
-
-  // borrar esto despues que funcione!!
-  console.log(productList);
-  console.log(productB);
-  console.log("dato: " + id);
-  console.log(found);
 
   return (
     <div>
-      <Item product={found} />;
+      <Item product={productB} />;
     </div>
   );
 };

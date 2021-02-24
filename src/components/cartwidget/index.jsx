@@ -1,7 +1,10 @@
 import carrito from "./carrito.png";
 import "./cartwidget.css";
 
-const CartWidget = ({ text }) => {
+const CartWidget = ({ cart, size}) => {
+  console.log(cart);
+  console.log(size);
+
   return (
     <>
       <section className="cartwidget">
@@ -9,7 +12,9 @@ const CartWidget = ({ text }) => {
           <img src={carrito} className="carrito" alt="carrito" />
         </div>
         <div>
-          <p>{text}</p>
+          {/* <p>{item.item}</p>
+          <p>{item.quantity}</p> */}
+          <p>{size}</p>
         </div>
       </section>
     </>

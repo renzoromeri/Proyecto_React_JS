@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useContext } from "react";
 import {
   Navbar,
   Nav,
@@ -8,10 +9,13 @@ import {
   NavDropdown,
 } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
+import { CartContext } from "../../context/CartContext";
 import CartWidget from "../cartwidget";
 
-const NavbarComponent = ({ text }) => {
-  var aux = text;
+const NavbarComponent = () => {
+
+  const {cart, cartSize} = useContext(CartContext);
+  
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -33,9 +37,10 @@ const NavbarComponent = ({ text }) => {
               <Card.Title>Productos Seleccionados</Card.Title>
               <Card.Text>
                 Estos productos has elegidos para comprar.
-                <CartWidget text={aux} />
+                <CartWidget cart={cart} size={cartSize}/>
               </Card.Text>
               <Button variant="primary">Ver</Button>
+
             </Card.Body>
           </Card>
         </NavDropdown>

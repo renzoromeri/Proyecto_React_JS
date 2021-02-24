@@ -2,10 +2,14 @@ import "./style.css";
 import vino from "./vino.png";
 import { ItemCount } from "../ItemCount";
 import { useState } from "react";
+import { CartContext } from "../../context/CartContext";
+import { useContext } from "react";
 
 const ItemDetail = ({ product }) => {
   const [contador, setContador] = useState(1);
   const [boton, setBoton] = useState(1);
+
+  const { cart, setCart, cartSize } = useContext(CartContext);
 
   const onAdd = () => {
     if (contador < product.stock) {
@@ -24,7 +28,27 @@ const ItemDetail = ({ product }) => {
 
   const onBoton = () => {
     setBoton(setBoton + 1);
+    inCarrito();
   };
+
+  // funcion no terminada!!!
+  const inCarrito = () => {
+    
+    // setCart([...cart, {item: product, quantity: contador}])
+    if (cartSize === 0) {
+      setCart([...cart, { item: product, quantity: contador }]);
+    } else if (cart.includes(product)){
+      for (let index = 0; index < cart.length; index++) {
+        if (cart[index].item.id == product.id) {
+          cart[index].quantity = cart[index].quantity + contador;
+          break;
+        }
+      }
+    } else {
+      setCart([...cart, { item: product, quantity: contador }])
+    }
+  };
+
 
   return (
     <>
@@ -42,6 +66,7 @@ const ItemDetail = ({ product }) => {
           onRest={onRest}
           boton={boton}
           onBoton={onBoton}
+          inCarrito={inCarrito}
         />
       </div>
     </>

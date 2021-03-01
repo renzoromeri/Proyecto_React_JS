@@ -28,16 +28,15 @@ const ItemDetail = ({ product }) => {
 
   const onBoton = () => {
     setBoton(setBoton + 1);
-    inCarrito();
+    
   };
 
-  // funcion no terminada!!!
-  const inCarrito = () => {
-    
+  //no pude diferenciar entre los productos que estan y los que no, para cambiarle solamente la cantidad!
+  const inCart = () => {
     // setCart([...cart, {item: product, quantity: contador}])
     if (cartSize === 0) {
       setCart([...cart, { item: product, quantity: contador }]);
-    } else if (cart.includes(product)){
+    } else if (cart.includes(product)) {
       for (let index = 0; index < cart.length; index++) {
         if (cart[index].item.id == product.id) {
           cart[index].quantity = cart[index].quantity + contador;
@@ -45,10 +44,38 @@ const ItemDetail = ({ product }) => {
         }
       }
     } else {
-      setCart([...cart, { item: product, quantity: contador }])
+      setCart([...cart, { item: product, quantity: contador }]);
     }
   };
 
+  // const inCarrito = () => {
+  //   debugger;
+  //   if (cartSize === 0) {
+  //     setCart([...cart, { item: product, quantity: contador }]);
+  //   } else {
+  //     for (let index = 0; index < cart.length; index++) {
+  //       const found = cart.find((element) => element.item.id === product.id);
+  //       console.log(found);
+  //       if (found != null) {
+  //         // cart[index].quantity = cart[index].quantity + contador;
+  //         setCart(cart => ({
+  //           ...cart[index],
+  //           quantity: cart[index].quantity + contador,
+  //         }));
+  //         // console.log(cart);
+  //         break;
+  //       } else {
+  //         setCart([...cart, { item: product, quantity: contador }]);
+  //         break;
+  //       }
+  //       //   break;
+
+  //       // if (cart[index].item.id == product.id) {
+  //       //   cart[index].quantity = cart[index].quantity + contador;
+  //       //   break;
+  //     }
+  //   }
+  // };
 
   return (
     <>
@@ -66,7 +93,7 @@ const ItemDetail = ({ product }) => {
           onRest={onRest}
           boton={boton}
           onBoton={onBoton}
-          inCarrito={inCarrito}
+          inCarrito={inCart}
         />
       </div>
     </>

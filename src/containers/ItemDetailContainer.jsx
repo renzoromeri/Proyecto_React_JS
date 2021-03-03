@@ -2,21 +2,40 @@ import * as React from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Item from "../components/Item";
-import productList from "../mocks/productsList";
+import { getFirestore } from "../firebase";
+
+// import productList from "../mocks/productsList";
 
 const ItemDetailContainer = () => {
   const [producto1, setProducto1] = useState([]);
 
+  // React.useEffect(() => {
+  //   const myPromise2 = new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       resolve(productList);
+  //     }, 2000);
+  //   });
+  //   myPromise2.then(
+  //     (result) => setProducto1(result)
+  //     // ()=>{}
+  //   );
+  // }, []);
+
   React.useEffect(() => {
-    const myPromise2 = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(productList);
-      }, 2000);
+    // setLoading(true);
+    const db = getFirestore();
+    const itemCollection = db.collection('productos');
+    itemCollection.get().then((querySnapshot) => {
+      if(querySnapshot.size === 0){
+        console.log("No results");
+      }
+      setProducto1(querySnapshot.docs.map(doc => doc.data()));
+    }).catch((error) => {
+      console.log("Error searching items", error);
+    }).finally(() => {
+      // setLoading(false);
     });
-    myPromise2.then(
-      (result) => setProducto1(result)
-      // ()=>{}
-    );
+
   }, []);
 
   const { id } = useParams();

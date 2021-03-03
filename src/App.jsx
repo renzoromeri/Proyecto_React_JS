@@ -8,6 +8,7 @@ import Categorias from "./components/Categorias";
 import ItemDetailContainer from "./containers/ItemDetailContainer";
 import ItemDetailContainerB from "./containers/ItemDetailContainerB";
 import { CartProvider } from "./context/CartContext";
+import CartView from "./components/CartView";
 
 const App = () => {
   return (
@@ -23,12 +24,17 @@ const App = () => {
           <Route exact path="/categorias">
             <Categorias />
           </Route>
+
           <Route path="/categorias/:id">
             <ItemDetailContainer />
           </Route>
 
           <Route path="/producto/:id">
             <ItemDetailContainerB />
+          </Route>
+
+          <Route exact path="/cart">
+            <CartView />
           </Route>
 
           <Route path="*" children={<div>Not found</div>} />

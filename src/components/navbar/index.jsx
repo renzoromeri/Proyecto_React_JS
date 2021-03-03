@@ -1,21 +1,18 @@
+import carrito from "../../components/Cartwidget/carrito.png";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useContext } from "react";
 import {
   Navbar,
   Nav,
   Form,
   FormControl,
   Button,
-  NavDropdown,
+  // NavDropdown,
+  Dropdown,
 } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import { CartContext } from "../../context/CartContext";
-import CartWidget from "../cartwidget";
+import CartWidget from "../Cartwidget";
 
 const NavbarComponent = () => {
-
-  const {cart, cartSize} = useContext(CartContext);
-  
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -30,20 +27,30 @@ const NavbarComponent = () => {
           <Nav.Link href="/categorias/accesorios">Accesorios</Nav.Link>
           <Nav.Link href="/categorias/promociones">Promociones</Nav.Link>
         </Nav>
-        <NavDropdown title="Carrito" id="nav-dropdown">
-          <Card style={{ width: "18rem" }}>
-            {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-            <Card.Body>
-              <Card.Title>Productos Seleccionados</Card.Title>
-              <Card.Text>
-                Estos productos has elegidos para comprar.
-                <CartWidget cart={cart} size={cartSize}/>
-              </Card.Text>
-              <Button variant="primary">Ver</Button>
 
-            </Card.Body>
-          </Card>
-        </NavDropdown>
+        <Dropdown style={{ margin: "7px" }}>
+          <Dropdown.Toggle variant="primary" id="dropdown-basic-button">
+            <img
+              src={carrito}
+              className="carrito"
+              alt="carrito"
+              style={{ width: "30px", height: "30px" }}
+            />
+            {/* <p>( {cartTotal.totalItems} )</p> */}
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Card style={{ width: "18rem" }}>
+              {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+              <Card.Body>
+                <Card.Title>Carrito de compras</Card.Title>
+                <Card.Text>
+                  <CartWidget />
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Dropdown.Menu>
+        </Dropdown>
 
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -55,3 +62,24 @@ const NavbarComponent = () => {
 };
 
 export default NavbarComponent;
+
+{
+  /* <NavDropdown title="Carrito" id="nav-dropdown">
+          <Card style={{ width: "18rem" }}> */
+}
+{
+  /* <Card.Img variant="top" src="holder.js/100px180" /> */
+}
+{
+  /* <Card.Body>
+              <Card.Title>Productos Seleccionados</Card.Title>
+              <Card.Text>
+                Estos productos has elegidos para comprar.
+                <CartWidget cart={cart} cant={cartTotal}/>
+              </Card.Text>
+              <Button variant="primary">Ver</Button>
+
+            </Card.Body>
+          </Card>
+        </NavDropdown> */
+}

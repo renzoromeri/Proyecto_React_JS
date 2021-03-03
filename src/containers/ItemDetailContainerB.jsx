@@ -16,7 +16,7 @@ const ItemDetailContainerB = () => {
       }, 2000);
     });
     myPromiseB.then((result) => {
-      const found = result.find((element) => element.id == id);
+      const found = result.find((element) => element.id === id);
       setProductB(found);
     });
   }, []);

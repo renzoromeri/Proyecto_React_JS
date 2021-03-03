@@ -1,14 +1,10 @@
-// import carrito from "./carrito.png";
-import "./cartwidget.css";
-import ItemCart from "../ItemCart";
+import ItemCartDetail from "../ItemCartDetail";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 
-const CartWidget = () => {
-  const { cart, removeCartItem, cleanCart, cartTotal } = useContext(
-    CartContext
-  );
+const CartView = () => {
+  const { cart, removeCartItem, cleanCart, cartTotal } = useContext(CartContext);
 
   const remove = (id) => {
     console.log(id);
@@ -21,18 +17,19 @@ const CartWidget = () => {
         <section className="cartwidget">
           <div>
             {cart.map((item) => {
-              return <ItemCart key={item.id} product={item} remove={remove} />;
+              return (
+                <ItemCartDetail key={item.id} product={item} remove={remove} />
+              );
             })}
           </div>
           <div>
             <p>Cantidad de Productos elegidos: {cartTotal.totalItems}</p>
+            <br />
             <p>Precio Total: {cartTotal.totalCash}</p>
-          </div>
-          <div>
+            <br/>
+            <Link to={`/cart`}>Pagar</Link>
+            <br/>
             <a onClick={cleanCart}>Vaciar Carrito</a>
-          </div>
-          <div>
-            <Link to={`/cart`}>Finalizar Compra</Link>
           </div>
         </section>
       ) : (
@@ -45,10 +42,4 @@ const CartWidget = () => {
   );
 };
 
-export default CartWidget;
-
-{
-  /* <div>
-          <img src={carrito} className="carrito" alt="carrito" />
-        </div> */
-}
+export default CartView;

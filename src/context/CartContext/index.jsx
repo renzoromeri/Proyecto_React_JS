@@ -3,61 +3,68 @@ import { createContext, useState } from "react";
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  // const [cart, setCart] = useState([{ id:1, name: "Vino", price: 500, stock: 7, idCat: "vinos", desc: "vino rico", cant: 0 }]);
-  //   objeto { item: {} , quantity } { item: {} , quantity: 0 }
-
   const [cart, setCart] = useState([]);
+  const [cartTotal, setCartTotal] = useState([{ totalCash: 0, totalItems: 0 }]);
 
-  // Si dejo la funcion aca, no me funciona!!
-  // const inCart = (obj, contador) => {
+  function updateCart(id, name, price, stock, idCat, desc, cant) {
+    const newProduct = {
+      id: id,
+      name: name,
+      price: price,
+      stock: stock,
+      idCat: idCat,
+      desc: desc,
+      cant: cant,
+    };
 
-  //   console.log(obj)
-  //   console.log(contador)
-  //   if (cart.length === 0) {
-  //     setCart([...cart, { item: obj, quantity: contador }]);
-  //   } else if (cart.includes(obj)) {
-  //     for (let index = 0; index < cart.length; index++) {
-  //       if (cart[index].item.id === obj.id) {
-  //         cart[index].quantity = cart[index].quantity + contador;
-  //         break;
-  //       }
-  //     }
-  //   } else {
-  //     setCart([...cart, { item: obj, quantity: contador }]);
-  //   }
-  // };
+    const isOnCart = cart.find((item) => item.id === newProduct.id);
+    let actualCartContent = cart;
+    if (isOnCart) {
+      let indice = actualCartContent.indexOf(isOnCart);
+      newProduct.cant = isOnCart.cant + newProduct.cant;
+      actualCartContent.splice(indice, 1);
+      actualCartContent.unshift(newProduct);
+      setCart(actualCartContent);
+      totalCart();
+    } else {
+      actualCartContent.unshift(newProduct);
+      setCart(actualCartContent);
+      totalCart();
+    }
 
-  // const inCarrito = () => {
-  //   debugger;
-  //   if (cartSize === 0) {
-  //     setCart([...cart, { item: product, quantity: contador }]);
-  //   } else {
-  //     for (let index = 0; index < cart.length; index++) {
-  //       const found = cart.find((element) => element.item.id === product.id);
-  //       console.log(found);
-  //       if (found != null) {
-  //         // cart[index].quantity = cart[index].quantity + contador;
-  //         setCart(cart => ({
-  //           ...cart[index],
-  //           quantity: cart[index].quantity + contador,
-  //         }));
-  //         // console.log(cart);
-  //         break;
-  //       } else {
-  //         setCart([...cart, { item: product, quantity: contador }]);
-  //         break;
-  //       }
-  //       //   break;
+    // Falta hacer la funcion para agrupar productos
+  }
 
-  //       // if (cart[index].item.id == product.id) {
-  //       //   cart[index].quantity = cart[index].quantity + contador;
-  //       //   break;
-  //     }
-  //   }
-  // };
+  function totalCart() {
+    const total = cart.reduce((acc, item) => acc + item.price * item.cant, 0);
+
+    const items = cart.reduce((acc, item) => acc + item.cant, 0);
+
+    setCartTotal({ totalCash: total, totalItems: items });
+  }
+
+  function removeCartItem(id) {
+    const isOnCart = cart.find((item) => item.id === id);
+    let actualCartContent = cart;
+    if (isOnCart) {
+      let indice = actualCartContent.indexOf(isOnCart);
+      actualCartContent.splice(indice, 1);
+      setCart(actualCartContent);
+      totalCart();
+    } else {
+      console.log("Error Item Id not Founded");
+    }
+  }
+
+  function cleanCart() {
+    setCart([]);
+    totalCart();
+  }
 
   return (
-    <CartContext.Provider value={{ cart, setCart, cartSize: cart.length }}>
+    <CartContext.Provider
+      value={{ cart, updateCart, cartTotal, removeCartItem, cleanCart }}
+    >
       {children}
     </CartContext.Provider>
   );

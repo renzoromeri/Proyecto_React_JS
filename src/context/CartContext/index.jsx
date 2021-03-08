@@ -32,7 +32,7 @@ export const CartProvider = ({ children }) => {
       totalCart();
     }
 
-    // Falta hacer la funcion para agrupar productos
+    // Falta hacer la funcion para agrupar productos y para bajar el stock en base de datos
   }
 
   function totalCart() {

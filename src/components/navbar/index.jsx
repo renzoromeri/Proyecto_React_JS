@@ -1,4 +1,4 @@
-import carrito from "../../components/Cartwidget/carrito.png";
+import carrito from "../Cartwidget/carrito.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Navbar,
@@ -11,21 +11,41 @@ import {
 } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import CartWidget from "../Cartwidget";
+import { Link } from "react-router-dom";
 
 const NavbarComponent = () => {
   return (
     <>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/">La Botellita</Navbar.Brand>
+        <Navbar.Brand>
+          <Link style={{color: "white"}} to={"/"}>La Botellita</Link>
+        </Navbar.Brand>
+        {/* <Navbar.Brand href="/">La Botellita</Navbar.Brand> */}
         <Nav className="mr-auto">
-          <Nav.Link href="/categorias">Categorias:</Nav.Link>
-          <Nav.Link href="/categorias/vinos">Vinos</Nav.Link>
-          <Nav.Link href="/categorias/cervezas">Cervezas</Nav.Link>
-          <Nav.Link href="/categorias/gaseosas">Gaseosas</Nav.Link>
-          <Nav.Link href="/categorias/whiskys">Whiskys</Nav.Link>
-          <Nav.Link href="/categorias/espirituosos">Espirituosos</Nav.Link>
-          <Nav.Link href="/categorias/accesorios">Accesorios</Nav.Link>
-          <Nav.Link href="/categorias/promociones">Promociones</Nav.Link>
+          <Nav.Link>
+            <Link to={"/categorias"}>Categorias:</Link>
+          </Nav.Link>
+          <Nav.Link>
+            <Link to={"/categorias/vinos"}>Vinos</Link>
+          </Nav.Link>
+          <Nav.Link>
+            <Link to={"/categorias/cervezas"}>Cervezas</Link>
+          </Nav.Link>
+          <Nav.Link>
+            <Link to={"/categorias/gaseosas"}>Gaseosas</Link>
+          </Nav.Link>
+          <Nav.Link>
+            <Link to={"/categorias/whiskys"}>Whiskys</Link>
+          </Nav.Link>
+          <Nav.Link>
+            <Link to={"/categorias/espirituosos"}>Espirituosos</Link>
+          </Nav.Link>
+          <Nav.Link>
+            <Link to={"/categorias/accesorios"}>Accesorios</Link>
+          </Nav.Link>
+          <Nav.Link>
+            <Link to={"/categorias/promociones"}>Promociones</Link>
+          </Nav.Link>
         </Nav>
 
         <Dropdown style={{ margin: "7px" }}>
@@ -83,3 +103,12 @@ export default NavbarComponent;
           </Card>
         </NavDropdown> */
 }
+
+{/* <Nav.Link href="/categorias">Categorias:</Nav.Link>
+          <Nav.Link href="/categorias/vinos">Vinos</Nav.Link>
+          <Nav.Link href="/categorias/cervezas">Cervezas</Nav.Link>
+          <Nav.Link href="/categorias/gaseosas">Gaseosas</Nav.Link>
+          <Nav.Link href="/categorias/whiskys">Whiskys</Nav.Link>
+          <Nav.Link href="/categorias/espirituosos">Espirituosos</Nav.Link>
+          <Nav.Link href="/categorias/accesorios">Accesorios</Nav.Link>
+          <Nav.Link href="/categorias/promociones">Promociones</Nav.Link> */}

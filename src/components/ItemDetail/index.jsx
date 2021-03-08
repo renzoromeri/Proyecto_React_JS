@@ -9,7 +9,7 @@ const ItemDetail = ({ product }) => {
   const [contador, setContador] = useState(1);
   const [boton, setBoton] = useState(1);
 
-  const { cart, updateCart, cartTotal } = useContext(CartContext);
+  const { updateCart } = useContext(CartContext);
 
   const onAdd = () => {
     if (contador < product.stock) {

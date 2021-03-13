@@ -18,7 +18,9 @@ const NavbarComponent = () => {
     <>
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand>
-          <Link style={{color: "white"}} to={"/"}>La Botellita</Link>
+          <Link style={{ color: "white" }} to={"/"}>
+            La Botellita
+          </Link>
         </Navbar.Brand>
         {/* <Navbar.Brand href="/">La Botellita</Navbar.Brand> */}
         <Nav className="mr-auto">
@@ -82,33 +84,3 @@ const NavbarComponent = () => {
 };
 
 export default NavbarComponent;
-
-{
-  /* <NavDropdown title="Carrito" id="nav-dropdown">
-          <Card style={{ width: "18rem" }}> */
-}
-{
-  /* <Card.Img variant="top" src="holder.js/100px180" /> */
-}
-{
-  /* <Card.Body>
-              <Card.Title>Productos Seleccionados</Card.Title>
-              <Card.Text>
-                Estos productos has elegidos para comprar.
-                <CartWidget cart={cart} cant={cartTotal}/>
-              </Card.Text>
-              <Button variant="primary">Ver</Button>
-
-            </Card.Body>
-          </Card>
-        </NavDropdown> */
-}
-
-{/* <Nav.Link href="/categorias">Categorias:</Nav.Link>
-          <Nav.Link href="/categorias/vinos">Vinos</Nav.Link>
-          <Nav.Link href="/categorias/cervezas">Cervezas</Nav.Link>
-          <Nav.Link href="/categorias/gaseosas">Gaseosas</Nav.Link>
-          <Nav.Link href="/categorias/whiskys">Whiskys</Nav.Link>
-          <Nav.Link href="/categorias/espirituosos">Espirituosos</Nav.Link>
-          <Nav.Link href="/categorias/accesorios">Accesorios</Nav.Link>
-          <Nav.Link href="/categorias/promociones">Promociones</Nav.Link> */}

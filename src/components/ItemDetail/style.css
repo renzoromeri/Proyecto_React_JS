@@ -1,6 +1,8 @@
 
-.card{
-    border: 1px solid black;
-    border-radius: 0.25rem;
-    width: 250px;
+.card-detail{
+    /* border: 1px solid black;
+    border-radius: 0.25rem; */
+    width: 140px;
+    margin: 3px;
+    text-align: center;
 }

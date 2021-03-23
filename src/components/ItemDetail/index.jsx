@@ -1,5 +1,4 @@
 import "./style.css";
-import vino from "./vino.png";
 import { ItemCount } from "../ItemCount";
 import { useState } from "react";
 import { CartContext } from "../../context/CartContext";
@@ -7,7 +6,6 @@ import { useContext } from "react";
 
 const ItemDetail = ({ product }) => {
   const [contador, setContador] = useState(1);
-  const [boton, setBoton] = useState(1);
 
   const { updateCart } = useContext(CartContext);
 
@@ -25,10 +23,6 @@ const ItemDetail = ({ product }) => {
     }
   };
 
-  const onBoton = () => {
-    setBoton(setBoton + 1);
-  };
-
   const inCart = () => {
     updateCart(
       product.id,
@@ -37,26 +31,22 @@ const ItemDetail = ({ product }) => {
       product.stock,
       product.idCat,
       product.desc,
+      product.img,
       contador
     );
+    alert("Producto Agregado al Carrito");
   };
 
   return (
     <>
-      <div className="card">
-        <h4>Descripción:</h4>
-        <br />
-        <h4>{product.desc}</h4>
-        <br />
-        <img src={vino} className="carrito" alt="carrito" />
+      <div className="card-detail">
+        <p>{product.desc}</p>
         <br />
         <ItemCount
           stock={product.stock}
           cont={contador}
           onAdd={onAdd}
           onRest={onRest}
-          boton={boton}
-          onBoton={onBoton}
           inCarrito={inCart}
         />
       </div>

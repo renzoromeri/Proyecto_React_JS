@@ -1,49 +1,65 @@
-import vino from "../ItemDetail/vino.png";
+import vino from "../Categorias/vino.png";
+import beer from "../Categorias/beer.png";
+import gaseosa from "../Categorias/gaseosa.png";
+import whiskey from "../Categorias/whiskey.png";
+import absinthe from "../Categorias/absinthe.png";
+import corkscrew from "../Categorias/corkscrew.png";
+import alcohol from "../Categorias/alcohol.png";
+import "./style.css";
 import { Link } from "react-router-dom";
 
 const Categorias = () => {
   const listaCategorias = [
     {
-      name: "vinos",
+      name: "Vinos",
       rout: vino,
     },
     {
-      name: "cervezas",
-      rout: vino,
+      name: "Cervezas",
+      rout: beer,
     },
     {
-      name: "gaseosas",
-      rout: vino,
+      name: "Gaseosas",
+      rout: gaseosa,
     },
     {
-      name: "whiskys",
-      rout: vino,
+      name: "Whiskys",
+      rout: whiskey,
     },
     {
-      name: "espirituosos",
-      rout: vino,
+      name: "Espirituosos",
+      rout: absinthe,
     },
     {
-      name: "accesorios",
-      rout: vino,
+      name: "Accesorios",
+      rout: corkscrew,
     },
     {
-      name: "promociones",
-      rout: vino,
+      name: "Promociones",
+      rout: alcohol,
     },
   ];
 
   return (
-    <div>
-      {listaCategorias.map((element) => {
-        return (
-          <>
-            <img src={element.rout} width="80" alt="" />
-            <Link to={`/categorias/${element.name}`}>{element.name}</Link>
-          </>
-        );
-      })}
-    </div>
+    <>
+      <div className="cat">
+        <h2 className="titulo">Categorias de Productos</h2>
+      </div>
+      <div className="cat">
+        {listaCategorias.map((element) => {
+          return (
+            <>
+              <Link className="link" to={`/categorias/${element.name}`}>
+                <div className="cat-2">
+                  <img className="img-cat" src={element.rout} alt="" />
+                  <h4>{element.name}</h4>
+                </div>
+              </Link>
+            </>
+          );
+        })}
+      </div>
+    </>
   );
 };
 

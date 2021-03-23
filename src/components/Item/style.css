@@ -1,21 +1,57 @@
-
-.card{
-    border: 1px solid black;
-    border-radius: 0.25rem;
-    width: 250px;
-}
-
-.card2{
-    border: 1px solid black;
-    border-radius: 0.25rem;
-    width: 100px;
-    height: 100px;
+.panel-item {
+    background-color: #fff;
+    border: solid 2px #000;
+    box-shadow: 0 6px 6px -6px #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 400px;
+    width: 200px;
+    margin: 1vmin;
+    overflow: hidden;
+    position: relative;
     overflow-y: scroll;
+  }
+
+
+.card {
+  border: 3px solid black;
+  border-radius: 0.25rem;
+  width: 200px;
+  height: auto;
+  margin: 30px 10px 10px;
+  text-align: center;
 }
 
-.card3{
-    border: 1px solid black;
-    border-radius: 0.25rem;
-    width: auto;
-    height: auto;
+.card2 {
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  width: auto;
+  height: auto;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  /* overflow-y: scroll; */
 }
+
+.card3 {
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  width: auto;
+  height: auto;
+  text-align: center;
+}
+
+img {
+  width: auto;
+  height: auto;
+}
+
+.img-cat {
+  width: 150px;
+  height: 150px;
+}
+
+/* .img-item{
+
+} */

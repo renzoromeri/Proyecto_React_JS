@@ -1,23 +1,32 @@
+import { Button } from "react-bootstrap";
+
 const ItemCartDetail = ({ product, remove }) => {
   return (
     <>
-      <div className="card3">
-        <p>{product.name}</p>
-        <br />
-        <p>Descripción: {product.desc}</p>
-        <br />
-        <p>Cantidad: {product.cant}</p>
-        <br />
-        <p>Precio por unidad: ${product.price}</p>
-      </div>
-      <div>
-        <h4
-          onClick={() => {
-            remove(product.id);
-          }}
-        >
-          x
-        </h4>
+      <div className="panel-item">
+        <div className="c5-item">
+          <div className="c5-item">
+            <img className="pequena-host" src={product.img} alt="carrito" />
+          </div>
+          <br />
+          <h3 className="link-item">{product.name}</h3>
+          <br />
+          <p>{product.desc}</p>
+          <br />
+          <p className="link-2">Cantidad de unidades: {product.cant}</p>
+          <br />
+          <p className="link-2">Precio por unidad: ${product.price}</p>
+        </div>
+        <div className="dropdown">
+          <Button
+            variant="danger"
+            onClick={() => {
+              remove(product.id);
+            }}
+          >
+            Eliminar
+          </Button>
+        </div>
       </div>
     </>
   );

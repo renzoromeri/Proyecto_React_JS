@@ -9,39 +9,42 @@ import ItemDetailContainer from "./containers/ItemDetailContainer";
 import ItemDetailContainerB from "./containers/ItemDetailContainerB";
 import { CartProvider } from "./context/CartContext";
 import CartView from "./components/CartView";
+import FooterComponent from "./components/footer";
 
 const App = () => {
   return (
-    <CartProvider>
-      <BrowserRouter>
-        <NavbarComponent />
+    <div className="body">
+      <CartProvider>
+        <BrowserRouter>
+          <NavbarComponent />
 
-        <Switch>
-          <Route exact path="/">
-            <ItemListContainer text={"Bienvenidos a La Botellita!!!"} />
-          </Route>
+          <Switch>
+            <Route exact path="/">
+              <ItemListContainer text={"¿Que vas a querer hoy?"} />
+            </Route>
 
-          <Route exact path="/categorias">
-            <Categorias />
-          </Route>
+            <Route exact path="/categorias">
+              <Categorias />
+            </Route>
 
-          <Route path="/categorias/:id">
-            <ItemDetailContainer />
-          </Route>
+            <Route path="/categorias/:id">
+              <ItemDetailContainer />
+            </Route>
 
-          <Route path="/producto/:id">
-            <ItemDetailContainerB />
-          </Route>
+            <Route path="/producto/:id">
+              <ItemDetailContainerB />
+            </Route>
 
-          <Route exact path="/cart">
-            <CartView />
-          </Route>
+            <Route exact path="/cart">
+              <CartView />
+            </Route>
 
-          <Route path="*" children={<div>Not found</div>} />
-        </Switch>
-        {/* <footer></footer> */}
-      </BrowserRouter>
-    </CartProvider>
+            <Route path="*" children={<div>Not found</div>} />
+          </Switch>
+          <FooterComponent />
+        </BrowserRouter>
+      </CartProvider>
+    </div>
   );
 };
 

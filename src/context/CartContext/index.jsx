@@ -6,7 +6,7 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState([{ totalCash: 0, totalItems: 0 }]);
 
-  function updateCart(id, name, price, stock, idCat, desc, cant) {
+  function updateCart(id, name, price, stock, idCat, desc, img, cant) {
     const newProduct = {
       id: id,
       name: name,
@@ -14,6 +14,7 @@ export const CartProvider = ({ children }) => {
       stock: stock,
       idCat: idCat,
       desc: desc,
+      img: img,
       cant: cant,
     };
 
@@ -31,8 +32,6 @@ export const CartProvider = ({ children }) => {
       setCart(actualCartContent);
       totalCart();
     }
-
-    // Falta hacer la funcion para agrupar productos y para bajar el stock en base de datos
   }
 
   function totalCart() {

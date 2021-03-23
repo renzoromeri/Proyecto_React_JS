@@ -1,0 +1,13 @@
+.cat {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  padding: 40px;
+  margin: 50px;
+}
+
+.cat-2 {
+  padding: 15px;
+  margin: 5px;
+}

@@ -1,16 +1,15 @@
-import "./style.css";
-import { Link } from "react-router-dom";
+import {Button} from "react-bootstrap";
 
-export const ItemCount = ({ stock, cont, onAdd, onRest, boton, inCarrito}) => {
+export const ItemCount = ({ stock, cont, onAdd, onRest, inCarrito}) => {
   return (
     <>
-      <div>
-        <button onClick={onRest}>-</button>
-        <b>{cont}</b>
-        {cont < stock ? (<button onClick={() => {onAdd(stock);}}> +</button>) : (<p>No queda mas stock, lo lamento!!!</p>)}
+      <div className="dropdown">
+        <Button variant="secondary" onClick={onRest}>-</Button>
+        <b className="cont">{cont}</b>
+        {cont < stock ? (<Button variant="secondary" onClick={() => {onAdd(stock);}}> +</Button>) : (<p>No queda mas stock, lo lamento!!!</p>)}
       </div>
-      <div>
-        {boton === 1 ? (<button onClick={inCarrito} >Agregar al Carrito</button>) : (<Link to={`/cart/`}>Terminar mi compra</Link>)}
+      <div className="dropdown"> 
+        <Button variant="success" onClick={inCarrito} >Agregar al Carrito</Button>
       </div>
     </>
   );

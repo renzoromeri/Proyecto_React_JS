@@ -2,7 +2,7 @@ import ItemCartDetail from "../ItemCartDetail";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import { getFirestore } from "../../firebase";
 import firebase from "firebase/app";
@@ -15,11 +15,10 @@ const CartView = () => {
 
   const [name, setName] = useState("");
   const [mail, setMail] = useState("");
+  const [mail2, setMail2] = useState("");
   const [tel, setTel] = useState("");
-  const [ordenId, setOrdenId] = useState("");
 
   const remove = (id) => {
-    console.log(id);
     removeCartItem(id);
   };
 
@@ -35,13 +34,11 @@ const CartView = () => {
     };
 
     OrdenesCollection.add(newOrder).then((value) => {
-      console.log(value.id);
       let id = value.id;
-      setOrdenId(id);
+      document.getElementById("idOrden").innerHTML =
+        "El ID de tu orden es: " + id;
     });
-
-    console.log(newOrder);
-    console.log(ordenId);
+    console.log(newOrder)
   };
 
   return (
@@ -49,42 +46,10 @@ const CartView = () => {
       {cart.length !== 0 ? (
         <div>
           <section>
-            <h2>Datos personales:</h2>
-            <Form>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label>Nombre</Form.Label>
-                <Form.Control
-                  type="text"
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
-                />
-                {/* <Form.Text className="text-muted">
-                </Form.Text> */}
-              </Form.Group>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  onChange={(e) => {
-                    setMail(e.target.value);
-                  }}
-                />
-              </Form.Group>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label>Telefono</Form.Label>
-                <Form.Control
-                  type="text"
-                  onChange={(e) => {
-                    setTel(e.target.value);
-                  }}
-                />
-              </Form.Group>
-            </Form>
-          </section>
-          <section>
-            <h2>Su carrito:</h2>
-            <div className="cartwidget">
+            <div className="ct">
+              <h2 className="titulo">Tu pedido:</h2>
+            </div>
+            <div className="itemList">
               {cart.map((item) => {
                 return (
                   <ItemCartDetail
@@ -95,32 +60,95 @@ const CartView = () => {
                 );
               })}
             </div>
-            <div>
-              <p>Cantidad de Productos elegidos: {cartTotal.totalItems}</p>
-              <br />
-              <p>Precio Total: {cartTotal.totalCash}</p>
-              <br />
-              {/* <Link to={`/cart`}>Pagar</Link> */}
-              <button
-                onClick={() => {
-                  finalizarCompra();
-                }}
-              >
-                Finalizar Compra
-              </button>
-              <br />
-              <button onClick={cleanCart}>Vaciar Carrito</button>
+            <div className="ct">
+              <h2 className="titulo">
+                Cantidad de Productos elegidos: {cartTotal.totalItems}
+              </h2>
             </div>
-            <div>
-              <h2>Su nº de orden es:</h2>
-              <h3>{ordenId}</h3>
+            <div className="ct">
+              <h2 className="titulo">Precio Total: ${cartTotal.totalCash}</h2>
             </div>
+          </section>
+          <section className="form">
+            <h2 className="titulo">Datos personales:</h2>
+            <Form>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Control
+                  type="text"
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                  placeholder="Nombre Completo"
+                />
+              </Form.Group>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Control
+                  type="text"
+                  onChange={(e) => {
+                    setTel(e.target.value);
+                  }}
+                  placeholder="Telefono"
+                />
+              </Form.Group>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Control
+                  type="email"
+                  onChange={(e) => {
+                    setMail(e.target.value);
+                  }}
+                  placeholder="Email"
+                />
+              </Form.Group>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Control
+                  type="email"
+                  onChange={(e) => {
+                    setMail2(e.target.value);
+                  }}
+                  placeholder="Repite tu Email"
+                />
+              </Form.Group>
+            </Form>
+          </section>
+          <section>
+            {mail !== "" && mail === mail2 ? (
+              <div className="ct">
+                <Button
+                  variant="success"
+                  onClick={() => {
+                    finalizarCompra();
+                  }}
+                >
+                  Realizar Compra
+                </Button>
+              </div>
+            ) : (
+              <div className="ct">
+                <h3 className="form-2">
+                  Revise las direcciones de mails ingresadas!!
+                </h3>
+              </div>
+            )}
+            <div className="ct">
+              <Button variant="warning" onClick={cleanCart}>
+                Vaciar Carrito
+              </Button>
+            </div>
+            <div id="idOrden" className="idOrden"></div>
           </section>
         </div>
       ) : (
-        <div>
-          <p>No hay productos seleccionados"</p>
-          <Link to={`/`}>Ir al Home</Link>
+        <div className="ct-3">
+          <div className="link">
+            <h3>No hay productos seleccionados</h3>
+          </div>
+          <div>
+            <Button variant="warning">
+              <Link className="link-2" to={`/`}>
+                Ir al Home
+              </Link>
+            </Button>
+          </div>
         </div>
       )}
     </>
@@ -128,26 +156,3 @@ const CartView = () => {
 };
 
 export default CartView;
-
-{
-  /* <Form>
-  <Form.Group controlId="formBasicEmail">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" placeholder="Enter email" />
-    <Form.Text className="text-muted">
-      We'll never share your email with anyone else.
-    </Form.Text>
-  </Form.Group>
-
-  <Form.Group controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
-    <Form.Control type="password" placeholder="Password" />
-  </Form.Group>
-  <Form.Group controlId="formBasicCheckbox">
-    <Form.Check type="checkbox" label="Check me out" />
-  </Form.Group>
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
-</Form> */
-}

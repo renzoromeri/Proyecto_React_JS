@@ -3,82 +3,89 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Navbar,
   Nav,
-  Form,
-  FormControl,
-  Button,
-  // NavDropdown,
+  // Form,
+  // FormControl,
+  // Button,
   Dropdown,
 } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import CartWidget from "../Cartwidget";
 import { Link } from "react-router-dom";
+import logo from "./logo-nav.png";
 
 const NavbarComponent = () => {
   return (
     <>
-      <Navbar bg="dark" variant="dark">
+      <nav className="nav">
         <Navbar.Brand>
-          <Link style={{ color: "white" }} to={"/"}>
-            La Botellita
+          <Link to={"/"}>
+            <img className="logo-nav" src={logo} alt="" />
           </Link>
         </Navbar.Brand>
-        {/* <Navbar.Brand href="/">La Botellita</Navbar.Brand> */}
-        <Nav className="mr-auto">
+        <Nav>
           <Nav.Link>
-            <Link to={"/categorias"}>Categorias:</Link>
+            <Link className="link-cat" to={"/categorias"}>
+              Categorias:
+            </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to={"/categorias/vinos"}>Vinos</Link>
+            <Link className="link" to={"/categorias/vinos"}>
+              Vinos
+            </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to={"/categorias/cervezas"}>Cervezas</Link>
+            <Link className="link" to={"/categorias/cervezas"}>
+              Cervezas
+            </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to={"/categorias/gaseosas"}>Gaseosas</Link>
+            <Link className="link" to={"/categorias/gaseosas"}>
+              Gaseosas
+            </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to={"/categorias/whiskys"}>Whiskys</Link>
+            <Link className="link" to={"/categorias/whiskys"}>
+              Whiskys
+            </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to={"/categorias/espirituosos"}>Espirituosos</Link>
+            <Link className="link" to={"/categorias/espirituosos"}>
+              Espirituosos
+            </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to={"/categorias/accesorios"}>Accesorios</Link>
+            <Link className="link" to={"/categorias/accesorios"}>
+              Accesorios
+            </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to={"/categorias/promociones"}>Promociones</Link>
+            <Link className="link" to={"/categorias/promociones"}>
+              Promociones
+            </Link>
           </Nav.Link>
         </Nav>
-
-        <Dropdown style={{ margin: "7px" }}>
+        <Dropdown>
           <Dropdown.Toggle variant="primary" id="dropdown-basic-button">
-            <img
-              src={carrito}
-              className="carrito"
-              alt="carrito"
-              style={{ width: "30px", height: "30px" }}
-            />
-            {/* <p>( {cartTotal.totalItems} )</p> */}
+            <img src={carrito} className="carrito" alt="carrito" />
           </Dropdown.Toggle>
-
           <Dropdown.Menu>
-            <Card style={{ width: "18rem" }}>
-              {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+            <Card className="card-nav">
               <Card.Body>
-                <Card.Title>Carrito de compras</Card.Title>
+                <Card.Title>
+                  <Link className="link-item" to={"/cart"}>Carrito de Compras</Link>
+                </Card.Title>
                 <Card.Text>
-                  <CartWidget />
+                  <CartWidget/>
                 </Card.Text>
               </Card.Body>
             </Card>
           </Dropdown.Menu>
         </Dropdown>
-
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+        {/* <Form inline className="nav-form">
+          <FormControl type="text" placeholder="Buscar Bebida" className="mr-sm-2" />
           <Button variant="outline-info">Buscar</Button>
-        </Form>
-      </Navbar>
+        </Form> */}
+      </nav>
     </>
   );
 };

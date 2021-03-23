@@ -1,9 +1,9 @@
-// import carrito from "./carrito.png";
 import "./cartwidget.css";
 import ItemCart from "../ItemCart";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const CartWidget = () => {
   const { cart, removeCartItem, cleanCart, cartTotal } = useContext(
@@ -18,27 +18,37 @@ const CartWidget = () => {
   return (
     <>
       {cart.length !== 0 ? (
-        <section className="cartwidget">
+        <div className="cw">
           <div>
             {cart.map((item) => {
               return <ItemCart key={item.id} product={item} remove={remove} />;
             })}
           </div>
           <div>
-            <p>Cantidad de Productos elegidos: {cartTotal.totalItems}</p>
-            <p>Precio Total: {cartTotal.totalCash}</p>
+            <p className="link-2">Cantidad Total: {cartTotal.totalItems}</p>
+            <p className="link-2">Precio Total: {cartTotal.totalCash}</p>
           </div>
-          <div>
-            <a onClick={cleanCart}>Vaciar Carrito</a>
+          <div className="bot-cartwidget">
+            <Button onClick={cleanCart} variant="warning">
+              Vaciar Carrito
+            </Button>
           </div>
-          <div>
-            <Link to={`/cart`}>Finalizar Compra</Link>
+          <div className="bot-cartwidget">
+            <Button variant="success">
+              <Link className="link" to={`/cart`}>
+                Finalizar Compra
+              </Link>
+            </Button>
           </div>
-        </section>
+        </div>
       ) : (
         <div>
-          <p>No hay productos seleccionados"</p>
-          <Link to={`/`}>Ir al Home</Link>
+          <p>No hay productos seleccionados</p>
+          <Button variant="warning">
+            <Link className="link-2" to={`/`}>
+              Ir al Home
+            </Link>
+          </Button>
         </div>
       )}
     </>
@@ -46,9 +56,3 @@ const CartWidget = () => {
 };
 
 export default CartWidget;
-
-{
-  /* <div>
-          <img src={carrito} className="carrito" alt="carrito" />
-        </div> */
-}

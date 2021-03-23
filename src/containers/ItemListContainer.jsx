@@ -2,24 +2,12 @@ import * as React from "react";
 import { useState } from "react";
 import ItemList from "../components/ItemList";
 import { getFirestore } from "../firebase";
-// import productList from "../mocks/productsList";
+import logo from "./logo.png";
 
 const ItemListContainer = ({ text }) => {
   const [products, setProducts] = useState([]);
 
-  // React.useEffect(() => {
-  //   const myPromise = new Promise((resolve, reject) => {
-  //     setTimeout(() => resolve(productList), 2000);
-  //   });
-
-  //   myPromise.then(
-  //     (result) => setProducts(result)
-  //     // ()=>{}
-  //   );
-  // }, []);
-
   React.useEffect(() => {
-    // setLoading(true);
     const db = getFirestore();
     const itemCollection = db.collection("productos");
     itemCollection
@@ -33,27 +21,22 @@ const ItemListContainer = ({ text }) => {
       .catch((error) => {
         console.log("Error searching items", error);
       })
-      .finally(() => {
-        // setLoading(false);
-      });
+      .finally(() => {});
   }, []);
 
   return (
     <>
-      <div>
-        <a href="/#" className="h1">
-          {" "}
-          {text}
-        </a>
-      </div>
-
-      <br />
-
-      <div>
-        <ItemList products={products} />
-      </div>
-
-      <br />
+      <section>
+        <div className="ct">
+          <img className="logo-tit" src={logo} alt="" />
+        </div>
+        <div className="ct">
+          <h1 className="titulo"> {text}</h1>
+        </div>
+        <div>
+          <ItemList products={products} />
+        </div>
+      </section>
     </>
   );
 };

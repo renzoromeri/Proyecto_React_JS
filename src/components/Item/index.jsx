@@ -2,6 +2,7 @@ import ItemDetail from "../ItemDetail";
 import "./style.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const Item = ({ product }) => {
   const [mostrar, setMostrar] = useState(false);
@@ -12,24 +13,36 @@ const Item = ({ product }) => {
 
   return (
     <>
-      <div className="card">
-        <Link to={`/producto/${product.id}`}>{product.name}</Link>
-        <br />
-        <div>
-          <p>Precio: ${product.price}</p>
+      <div className="panel-item">
+        <div className="c5-item">
+          <img className="pequena-host" src={product.img} alt="carrito" />
         </div>
-        <br />
-        <h4 onClick={changeView}>Detalle del producto</h4>
-        {mostrar ? (
-          <div id="item" className="itemdetail">
-            <ItemDetail product={product} />
-            <br />
-            <h4 onClick={changeView}>x</h4>
+        <div className="c5-item">
+          <Link className="link-2" to={`/producto/${product.id}`}>
+            {product.name}
+          </Link>
+          <div className="c5-item">
+            <p>Precio: ${product.price}</p>
           </div>
-        ) : null}
-        <br />
+          <div className="c5-item">
+            <Button className="dropdown" variant="info" onClick={changeView}>
+              Detalle
+            </Button>
+            {mostrar ? (
+              <div id="item" className="itemdetail">
+                <ItemDetail product={product} />
+                <Button
+                  className="dropdown"
+                  variant="danger"
+                  onClick={changeView}
+                >
+                  x
+                </Button>
+              </div>
+            ) : null}
+          </div>
+        </div>
       </div>
-      <br />
     </>
   );
 };

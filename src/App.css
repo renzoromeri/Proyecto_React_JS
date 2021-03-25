@@ -209,13 +209,15 @@ p {
 }
 
 .idOrden{
-  color: whitesmoke;
+  color: black;
+  background-color: white;
+  border: solid 2px #000;
   font-size: 40px;
   padding: 10px;
   margin: 15px;
   -webkit-text-stroke: 1px green;
   padding: 2px;
-  margin: 5px 20px 20px 20px;
+  margin: 5px 200px 20px 200px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -239,4 +241,20 @@ p {
   color: whitesmoke;
   -webkit-text-stroke: 1.0px red;
   font-size: 30px;
+}
+
+.main{
+  display: inline-block;
+  flex: 1 1;
+  height: 600px;
+  margin: 1vmin;
+  overflow: hidden;
+  position: relative;
+}
+
+.comic-hostel {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: "Comic Sans", cursive;
+  padding: 1vmin;
 }

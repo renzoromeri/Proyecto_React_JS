@@ -33,9 +33,11 @@ const ItemListContainer = ({ text }) => {
         <div className="ct">
           <h1 className="titulo"> {text}</h1>
         </div>
-        <div>
+        <section className="comic-hostel">
+        <div className="main">
           <ItemList products={products} />
         </div>
+        </section>
       </section>
     </>
   );

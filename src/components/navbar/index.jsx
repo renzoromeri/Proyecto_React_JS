@@ -1,4 +1,4 @@
-import carrito from "../Cartwidget/carrito.png";
+import carrito from "../cartwidget/carrito.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Navbar,
@@ -9,7 +9,7 @@ import {
   Dropdown,
 } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import CartWidget from "../Cartwidget";
+import CartWidget from "../cartwidget";
 import { Link } from "react-router-dom";
 import logo from "./logo-nav.png";
 
